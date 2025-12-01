@@ -1,139 +1,334 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Solutions - IPTV, VPN e Bots</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Shelby Connect Angola - TechConnect Suporte</title>
+    <meta name="description" content="Shelby Connect Angola - A VPN mais rápida e estável para Unitel, Africell e Movicel. Internet grátis, IPTV e suporte 24h.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #0a0e17;
+            --bg2: #141b2d;
+            --card: rgba(30,37,54,0.7);
+            --blue: #3a7df2;
+            --blue2: #5aa6f8;
+            --green: #3cf281;
+            --gold: #ffcc5d;
+            --text: #ebedf2;
+            --text2: #9aa3af;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg), var(--bg2));
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER */
+        header {
+            background: rgba(10,14,23,0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--blue), var(--blue2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-menu a {
+            color: var(--text2);
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover { color: var(--blue2); }
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--blue), var(--blue2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 20px;
+            color: var(--text2);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .btn {
+            padding: 14px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, var(--blue), var(--blue2));
+            color: white;
+        }
+        .btn-primary:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(58,125,242,0.4); }
+
+        /* PRODUTOS */
+        .produtos {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--blue2);
+        }
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .produto-card {
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: 0.4s;
+        }
+        .produto-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(58,125,242,0.3);
+        }
+        .produto-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .produto-card h3 {
+            font-size: 24px;
+            margin: 15px 0;
+            color: var(--blue2);
+        }
+        .features {
+            text-align: left;
+            margin: 20px 0;
+            color: var(--text2);
+        }
+        .features li {
+            margin: 10px 0;
+        }
+
+        /* DESTAQUE SHELBY CONNECT */
+        .shelby-highlight {
+            background: linear-gradient(135deg, rgba(58,125,242,0.2), rgba(90,166,248,0.1));
+            border: 2px solid var(--blue);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            margin: 50px 0;
+        }
+        .shelby-highlight h2 {
+            font-size: 40px;
+            color: var(--blue2);
+            margin-bottom: 20px;
+        }
+
+        /* SOBRE E CONTATO */
+        .sobre, .contato {
+            padding: 80px 0;
+        }
+        .contato-form {
+            display: grid;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(16,20,31,0.8);
+            color: var(--text);
+            font-size: 16px;
+        }
+        .form-group textarea { resize: vertical; }
+
+        /* FOOTER */
+        footer {
+            background: rgba(10,14,23,0.95);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--text2);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(10,14,23,0.98);
+                flex-direction: column;
+                padding: 20px;
+                display: none;
+            }
+            .nav-menu.active { display: flex; }
+            .menu-toggle { display: flex; }
+            .hero h1 { font-size: 36px; }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header com Menu -->
+
     <header id="header">
         <nav class="navbar">
             <div class="container">
-                <div class="logo">𝕋𝕖𝕔𝕙𝕔𝕠𝕟𝕟𝕖𝕔𝕥 𝕤𝕦𝕡𝕠𝕣𝕥𝕖</div>
-                
+                <div class="logo">Shelby Connect Angola</div>
                 <button class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
-                
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home">Início</a></li>
-                    <li><a href="#produtos">Produtos</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#produtos">Shelby Connect</a></li>
+                    <li><a href="#iptv">IPTV</a></li>
                     <li><a href="#contato">Contato</a></li>
-                    <li>
-                        <button class="theme-toggle" id="themeToggle">
-                            🎨 Tema
-                        </button>
-                    </li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Soluções Tecnológicas Profissionais</h1>
-                <p>IPTV Premium, VPN Segura e Bots Inteligentes para WhatsApp e Telegram</p>
-                <a href="#produtos" class="btn btn-primary">Ver Produtos</a>
+                <h1>Shelby Connect Angola</h1>
+                <p>A VPN mais rápida e estável de Angola<br>Funciona 100% na Unitel • Africell • Movicel</p>
+                <a href="https://wa.me/2449XXXXXXXX" class="btn btn-primary" target="_blank">
+                    Baixar Agora no WhatsApp
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Produtos Section -->
+    <div class="shelby-highlight">
+        <h2>Shelby Connect – A melhor VPN de Angola em 2025</h2>
+        <p>Internet grátis ilimitada • Servidores premium • Suporte 24h via WhatsApp</p>
+        <div style="margin: 30px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <img src="https://seu-link.com/shelby1.jpg" alt="Shelby Connect" style="width:100%; border-radius: 16px; border: 3px solid var(--blue);">
+            <img src="https://seu-link.com/shelby2.jpg" alt="Shelby Connect Conectado" style="width:100%; border-radius: 16px; border: 3px solid var(--green);">
+            <img src="https://seu-link.com/logo.png" alt="Logo Shelby Connect" style="width:100%; border-radius: 16px; border: 3px solid var(--gold);">
+        </div>
+    </div>
+
     <section id="produtos" class="produtos">
         <div class="container">
             <h2 class="section-title">Nossos Produtos</h2>
-            
             <div class="produtos-grid">
-                <!-- IPTV -->
+
                 <div class="produto-card">
-                    <div class="produto-icon">📺</div>
+                    <div class="produto-icon">Shield</div>
+                    <h3>Shelby Connect VPN</h3>
+                    <p>Internet grátis ilimitada em todas as operadoras angolanas</p>
+                    <ul class="features">
+                        <li>Unitel, Africell, Movicel</li>
+                        <li>Sem limite de dados</li>
+                        <li>Velocidade máxima</li>
+                        <li>Suporte 24h</li>
+                        <li>Atualização automática</li>
+                    </ul>
+                    <a href="https://wa.me/2449XXXXXXXX" class="btn btn-primary" target="_blank">Pedir no WhatsApp</a>
+                </div>
+
+                <div class="produto-card">
+                    <div class="produto-icon">TV</div>
                     <h3>IPTV Premium</h3>
-                    <p>Acesso a milhares de canais em alta definição, com estabilidade e qualidade garantida, e 100% Mangole</p>
+                    <p>Mais de 15.000 canais ao vivo + filmes e séries</p>
                     <ul class="features">
-                        <li>✓ +10.000 canais</li>
-                        <li>✓ Qualidade HD/4K</li>
-                        <li>✓ Suporte 24/7</li>
-                        <li>✓ Sem travamentos</li>
+                        <li>Canais angolanos inclusos</li>
+                        <li>Qualidade 4K</li>
+                        <li>Teste grátis 24h</li>
                     </ul>
-                    <button class="btn btn-secondary">Saiba Mais</button>
+                    <a href="https://wa.me/2449XXXXXXXX" class="btn btn-primary" target="_blank">Testar IPTV</a>
                 </div>
 
-                <!-- VPN -->
-                <div class="produto-card">
-                    <div class="produto-icon">🔒</div>
-                    <h3>VPN Segura</h3>
-                    <p>Navegue com privacidade total e acesse conteúdos de qualquer lugar do mundo, e 100% free</p>
-                    <ul class="features">
-                        <li>✓ Servidores globais</li>
-                        <li>✓ Criptografia avançada</li>
-                        <li>✓ Velocidade máxima</li>
-                        <li>✓ Operadoras Nacionais</li>
-                        <li>✓ Zero logs</li>
-                    </ul>
-                    <button class="btn btn-secondary">Saiba Mais</button>
-                </div>
-
-                <!-- Bots -->
-                <div class="produto-card">
-                    <div class="produto-icon">🤖</div>
-                    <h3>Bots Inteligentes</h3>
-                    <p>Automatize seu atendimento no WhatsApp e Telegram com bots personalizados.</p>
-                    <ul class="features">
-                        <li>✓ Atendimento 24/7</li>
-                        <li>✓ Personalização total</li>
-                        <li>✓ Integração fácil</li>
-                        <li>✓ Dashboard completo</li>
-                    </ul>
-                    <button class="btn btn-secondary">Saiba Mais</button>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Sobre Section -->
-    <section id="sobre" class="sobre">
-        <div class="container">
-            <h2 class="section-title">Sobre Nós</h2>
-            <div class="sobre-content">
-                <p>Somos especialistas em soluções tecnológicas com foco em entretenimento, segurança e automação. Nossa missão é oferecer produtos de alta qualidade com suporte excepcional.</p>
-                <p>Com anos de experiência no mercado, garantimos estabilidade, segurança e inovação em todos os nossos serviços.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contato Section -->
     <section id="contato" class="contato">
         <div class="container">
-            <h2 class="section-title">Entre em Contato</h2>
-            <form class="contato-form" id="contatoForm">
-                <div class="form-group">
-                    <input type="text" placeholder="Seu nome" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Seu e-mail" required>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Sua mensagem" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-            </form>
+            <h2 class="section-title">Fale Connosco</h2>
+            <p style="text-align:center; font-size:18px; margin-bottom:30px;">
+                <a href="https://wa.me/2449XXXXXXXX" target="_blank" style="color:var(--green); text-decoration:none;">
+                    WhatsApp: +244 9XX XXX XXX
+                </a>
+            </p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 𝙏𝙚𝙘𝙝𝙘𝙤𝙣𝙣𝙚𝙘𝙩 𝙨𝙪𝙥𝙤𝙧𝙩𝙚. Todos os direitos reservados.</p>
+            <p>© 2025 Shelby Connect Angola - TechConnect Suporte. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Menu mobile
+        document.getElementById('menuToggle').addEventListener('click', () => {
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
